@@ -13,6 +13,8 @@ export const FeedbackProvider = ({ children }) => {
 
   useEffect(() => {
     fetchFeedback()
+    const eventSource = new EventSource(`/feedback`)
+    eventSource.onmessage = (e) => console.log(e.data)
   }, [])
 
   // Fetch feedback
